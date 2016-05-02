@@ -166,6 +166,14 @@ export class Runner extends EventEmitter {
     }
     global.protractor = protractor;
 
+	if (this.config_.runNumber) {
+		browser_.runNumber = this.config_.runNumber;
+	}
+	
+	if (this.config_.capabilities && this.config_.capabilities.browserName) {
+		browser.browserName = this.config_.capabilities.browserName;
+	}
+	
     if (!this.config_.skipSourceMapSupport) {
       // Enable sourcemap support for stack traces.
       require('source-map-support').install();

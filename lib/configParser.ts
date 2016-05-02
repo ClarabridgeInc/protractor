@@ -22,6 +22,7 @@ try {
 
 export interface Config {
   specs: Array<string>;
+  runNumber?: any;
   multiCapabilities: Array<any>;
   capabilities?: any;
   rootElement: string;

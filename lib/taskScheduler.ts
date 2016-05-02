@@ -103,8 +103,21 @@ export class TaskScheduler {
         let specs = queue.specLists[queue.specsIndex];
         ++queue.specsIndex;
 
+		var runCapability = JSON.parse(JSON.stringify(queue.capabilities));
+		var userAgent = runCapability.cxstudioOptions.userAgent;
+		var downloadDirectory = runCapability.cxstudioOptions.downloadDirectory + '\\' + taskId;
+
+		runCapability.chromeOptions = {
+			prefs : {
+				'download' : {
+					'prompt_for_download' : false,
+					'default_directory' : downloadDirectory
+				}
+			}
+		}
+		
         return {
-          capabilities: queue.capabilities,
+          capabilities: runCapability,
           specs: specs,
           taskId: taskId,
           done: function() { --queue.numRunningInstances; }

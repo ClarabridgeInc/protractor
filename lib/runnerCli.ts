@@ -31,7 +31,8 @@ process.on('message', (m: any) => {
 
       // Get specs to be executed by this runner
       config.specs = m.specs;
-
+	  config.runNumber = m.runNumber;
+	  
       // Launch test run.
       let runner = new Runner(config);
 

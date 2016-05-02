@@ -100,7 +100,8 @@ export class TaskRunner extends EventEmitter {
         configFile: this.configFile,
         additionalConfig: this.additionalConfig,
         capabilities: this.task.capabilities,
-        specs: this.task.specs
+        specs: this.task.specs,
+		runNumber : this.task.taskId
       });
 
       return deferred.promise;
